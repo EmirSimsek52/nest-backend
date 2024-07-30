@@ -9,7 +9,7 @@ import { UsersModule } from './modules/users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb+srv://emirer2024:maldomal123@sacarya.z7p5wrm.mongodb.net/?retryWrites=true&w=majority&appName=sacarya'), 
+    MongooseModule.forRoot(''), 
     CatsModule,
     AuthModule,
     UsersModule,
