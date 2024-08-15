@@ -27,7 +27,9 @@ export class CatsService {
   }
 
   async update(id: string, updateCatDto: UpdateCatDto): Promise<Cat> {
-    const existingCat = await this.catModel.findByIdAndUpdate(id, updateCatDto, { new: true }).exec();
+    const existingCat = await this.catModel
+      .findByIdAndUpdate(id, updateCatDto, { new: true })
+      .exec();
     if (!existingCat) {
       throw new NotFoundException(`Cat #${id} not found`);
     }

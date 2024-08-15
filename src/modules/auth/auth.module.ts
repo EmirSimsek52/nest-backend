@@ -14,7 +14,7 @@ import { LocalStrategy } from './local.strategy';
     PassportModule,
     JwtModule.register({
       secret: '123456',
-      signOptions: { expiresIn: '60m' },
+      signOptions: { expiresIn: '60m' }, // 6o dakika sonra tokenin süresi dolacak
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],

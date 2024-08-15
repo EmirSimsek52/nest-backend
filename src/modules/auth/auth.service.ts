@@ -1,4 +1,4 @@
-import { Injectable, ConflictException } from '@nestjs/common';
+import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../users/users.service';
 import { CreateUserDto } from '../users/dto/create-user.dto';
@@ -18,13 +18,14 @@ export class AuthService {
       const { password, ...result } = user?.toObject();
       return result;
     }
-    return null;
+    throw new UnauthorizedException('Invalid username or password');
   }
 
   async login(user: any) {
-    const payload = { username: user.username, sub: user._id };
+    const payload = { username: user.username, sub: user._id, companyName: user.companyName };
     return {
       access_token: this.jwtService.sign(payload),
+      companyName: user.companyName,
     };
   }
 
